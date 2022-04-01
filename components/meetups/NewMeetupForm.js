@@ -51,7 +51,7 @@ function NewMeetupForm(props) {
           ></textarea>
         </div>
         <div className={classes.actions}>
-          <button onClick={()=>{}}>Add Meetup</button>
+          <button>Add Meetup</button>
         </div>
       </form>
     </Card>
