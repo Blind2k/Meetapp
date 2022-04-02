@@ -19,13 +19,17 @@ export default meetupId;
 
 // GET THE PATH AKA URL
 export async function getStaticPaths() {
-   const uri = "mongodb+srv://Zuriel:NgxSFumgpjuV5rb2@cluster0.7loqa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-   const client = await MongoClient.connect(uri);
-   const database = client.db();
-   const colectionDatabase = database.collection("meetups");
-   const meetups = await colectionDatabase.find({}, { _id: 1 }).toArray();
+   try {
+      const uri = "mongodb+srv://Zuriel:NgxSFumgpjuV5rb2@cluster0.7loqa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+      const client = await MongoClient.connect(uri);
+      const database = client.db();
+      const colectionDatabase = database.collection("meetups");
+      const meetups = await colectionDatabase.find({}, { _id: 1 }).toArray();
 
-   client.close();
+      client.close();
+   } catch (error) {
+      console.log(error);
+   }
    return {
       fallback: true, //AKA "blocking". will not give 404
       paths: meetups.map(meetup => ({
