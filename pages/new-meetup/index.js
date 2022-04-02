@@ -34,7 +34,7 @@ function NewMeetupPage() {
             <title>Add new meetapp</title>
             <meta name="Meetapp" content="Connect, meet, and get together in one place" />
          </Head>
-         <NewMeetupForm onAddMeetup={addMeetupHandler} />;
+         <NewMeetupForm onAddMeetup={addMeetupHandler}/>
       </Fragment>
    );
 }
