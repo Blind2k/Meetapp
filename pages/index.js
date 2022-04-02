@@ -28,22 +28,22 @@ export async function getStaticProps() {
          .toArray(); //TURN TO ARRAY
    
       client.close();
+      return {
+         props: {
+            meetups: meetups.map(meetup => ({
+               id: meetup._id.toString(),
+               title: meetup.title,
+               image: meetup.image,
+               description: meetup.description,
+            })),
+         },
+         revalidate: 10,
+      };
       
    } catch (error) {
       console.log(error); 
    }
 
-   return {
-      props: {
-         meetups: meetups.map(meetup => ({
-            id: meetup._id.toString(),
-            title: meetup.title,
-            image: meetup.image,
-            description: meetup.description,
-         })),
-      },
-      revalidate: 10,
-   };
 }
 
 export default HomePage;

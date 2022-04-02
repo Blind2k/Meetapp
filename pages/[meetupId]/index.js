@@ -25,30 +25,30 @@ export async function getStaticPaths() {
       const database = client.db();
       const colectionDatabase = database.collection("meetups");
       const meetups = await colectionDatabase.find({}, { _id: 1 }).toArray();
-
       client.close();
+      
+      return {
+         fallback: true, //AKA "blocking". will not give 404
+         paths: meetups.map(meetup => ({
+            params: { meetupId: meetup._id.toString() },
+         })),
+   
+         // [
+         //    {
+         //       params: {
+         //          meetupId: "m1",
+         //       },
+         //    },
+         //    {
+         //       params: {
+         //          meetupId: "m2",
+         //       },
+         //    },
+         // ],
+      };
    } catch (error) {
       console.log(error);
    }
-   return {
-      fallback: true, //AKA "blocking". will not give 404
-      paths: meetups.map(meetup => ({
-         params: { meetupId: meetup._id.toString() },
-      })),
-
-      // [
-      //    {
-      //       params: {
-      //          meetupId: "m1",
-      //       },
-      //    },
-      //    {
-      //       params: {
-      //          meetupId: "m2",
-      //       },
-      //    },
-      // ],
-   };
 }
 // GET THE PROPS FROM THE PATH
 export async function getStaticProps(context) {
