@@ -32,19 +32,6 @@ export async function getStaticPaths() {
          paths: meetups.map(meetup => ({
             params: { meetupId: meetup._id.toString() },
          })),
-   
-         // [
-         //    {
-         //       params: {
-         //          meetupId: "m1",
-         //       },
-         //    },
-         //    {
-         //       params: {
-         //          meetupId: "m2",
-         //       },
-         //    },
-         // ],
       };
    } catch (error) {
       console.log(error);
@@ -71,3 +58,39 @@ export async function getStaticProps(context) {
       revalidate: 100,
    };
 }
+
+/*
+// GET THE PATH AKA URL
+export async function getStaticPaths() {
+   try {
+      const uri = "mongodb+srv://Zuriel:NgxSFumgpjuV5rb2@cluster0.7loqa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+      const client = await MongoClient.connect(uri);
+      const database = client.db();
+      const colectionDatabase = database.collection("meetups");
+      const meetups = await colectionDatabase.find({}, { _id: 1 }).toArray();
+      client.close();
+      
+      return {
+         fallback: "blocking", //AKA true. will not give 404
+         paths: meetups.map(meetup => ({
+            params: { meetupId: meetup._id.toString() },
+         })),
+   
+         // [
+         //    {
+         //       params: {
+         //          meetupId: "m1",
+         //       },
+         //    },
+         //    {
+         //       params: {
+         //          meetupId: "m2",
+         //       },
+         //    },
+         // ],
+      };
+   } catch (error) {
+      console.log(error);
+   }
+}
+*/
