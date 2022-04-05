@@ -28,7 +28,7 @@ export async function getStaticPaths() {
       client.close();
       
       return {
-         fallback: true, //AKA "blocking". will not give 404
+         fallback: "blocking", //AKA true. will not give 404
          paths: meetups.map(meetup => ({
             params: { meetupId: meetup._id.toString() },
          })),
