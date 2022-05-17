@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 // /api/new-meetup
 // POST /api/new-meetup
-const uri = "mongodb+srv://Zuriel:NgxSFumgpjuV5rb2@cluster0.7loqa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const insertMongoDBLinkHere = "";
 
 async function handler(req, res) {
    if (req.method === "POST") {

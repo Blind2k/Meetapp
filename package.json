@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-course",
+  "name": "meeting_app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,5 +15,21 @@
   },
   "devDependencies": {
     "webpack": "^5.71.0"
+  },
+  "description": "Using next.js, an application to post and search meetups",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blind2k/Meetapp.git"
+  },
+  "keywords": [
+    "Next.js",
+    "Meetups",
+    "MongoDB"
+  ],
+  "author": "Blind2k",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Blind2k/Meetapp/issues"
   }
 }
